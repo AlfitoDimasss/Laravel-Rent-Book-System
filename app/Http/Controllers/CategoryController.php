@@ -69,7 +69,6 @@ class CategoryController extends Controller
     public function destroy($slug)
     {
         $category = Category::where('slug', $slug)->first();
-        // dd($category->books()->exists());
         if ($category->books()->exists()) {
             return redirect('/categories')->with(['failed' => 'Failed to delete category, because the category data is used by another table.']);
         } else {

@@ -24,6 +24,11 @@ class Book extends Model
         return $this->belongsToMany(Category::class, 'book_categories');
     }
 
+    public function rentLogs()
+    {
+        return $this->hasMany(RentLog::class);
+    }
+
     public function sluggable(): array
     {
         return [
