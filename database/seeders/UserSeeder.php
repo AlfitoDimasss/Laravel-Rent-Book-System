@@ -34,5 +34,13 @@ class UserSeeder extends Seeder
             'address' => 'Citra Gading',
             'status' => 'active'
         ]);
+
+        User::insert([
+            'username' => 'client2',
+            'slug' => 'client2',
+            'password' => Hash::make('password'),
+            'phone' => '081390343423',
+            'address' => 'Citra Gading 2'
+        ]);
     }
 }
