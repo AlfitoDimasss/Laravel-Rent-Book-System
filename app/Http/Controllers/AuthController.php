@@ -61,7 +61,11 @@ class AuthController extends Controller
         ]);
 
         $req['password'] = Hash::make($req->password);
-        User::create($req->all());
-        return redirect('/login')->with(['success' => 'Registration is successful, please login again.']);
+        $res = User::create($req->all());
+        if ($res) {
+            return redirect('/login')->with(['success' => 'Registration is successful, please wait until admin approve your account.']);
+        } else {
+            return redirect('/login')->with(['success' => 'Registration is unsuccessfuly, please try again.']);
+        }
     }
 }

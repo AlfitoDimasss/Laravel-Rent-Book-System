@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->string('cover')->default('default.jpg');
             $table->string('status')->default('available');
+            $table->integer('rating')->nullable();
             $table->timestamps();
         });
     }

@@ -46,6 +46,12 @@
           @endforeach
         </select>
       </div>
+      <div class="mb-3">
+        <label for="rating" class="block mb-2 font-medium text-gray-900 text-sm">Rating</label>
+        <input type="number" id="rating"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+          placeholder="1-5" name="rating" required>
+      </div>
       <button type="submit"
         class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Save</button>
     </form>

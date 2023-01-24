@@ -36,7 +36,9 @@
         <div class="w-1/4">
           <p class="block mb-2 font-medium text-gray-900 text-sm">Current Cover</p>
           <div>
-            <img src="{{ asset('storage/cover/'.$book->cover) }}" alt="" width="100px" height="100px">
+            <img
+              src="{{ $book->cover == 'default.jpg' ? asset('images/default.jpg') : asset('storage/cover/' . $book->cover) }}"
+              alt="" width="100px" height="100px">
           </div>
         </div>
         <div class="w-full">
@@ -66,6 +68,12 @@
           </select>
           <p class="text-xs italic text-gray-500 mt-2 ml-1">Leave blank if nothing changes.</p>
         </div>
+      </div>
+      <div class="mb-3">
+        <label for="rating" class="block mb-2 font-medium text-gray-900 text-sm">Rating</label>
+        <input type="number" id="rating"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+          placeholder="1-5" name="rating" value="{{ $book->rating }}" required>
       </div>
       <div class="flex justify-end">
         <button type="submit"

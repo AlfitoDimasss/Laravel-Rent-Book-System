@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/c34ef532b6.js" crossorigin="anonymous"></script>
   @vite('resources/css/app.css')
-  <title>Book Rent | @yield('title')</title>
+  <title>LaraBook | @yield('title')</title>
 </head>
 
 <body>
@@ -17,8 +17,8 @@
     <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
       <div class="container flex flex-wrap items-center justify-between mx-auto">
         <a href="https://flowbite.com/" class="flex items-center">
-          <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />
-          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Book Rent</span>
+          {{-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo" /> --}}
+          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">LaraBook</span>
         </a>
         <button data-collapse-toggle="navbar-default" type="button"
           class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -39,6 +39,7 @@
       {{-- Sidebar --}}
       <div class="bg-[#202E4B] w-full hidden lg:w-[15%] lg:min-h-full lg:block" id="target">
         <div class="bg-[#202E4B] border-gray-600 text-white">
+          @if (Auth::user())
           @if (Auth::user()->role_id == 1)
           <a href="/dashboard"
             class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium border-b border-t border-gray-600 hover:bg-gray-600 @if(request()->route()->uri == 'dashboard') bg-gray-900 border-r-8 border-r-orange-600 @endif">
@@ -90,28 +91,21 @@
             </div>
             <span>Profile</span>
           </a>
-          <a href="/books"
+          <a href="#"
             class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium border-b border-gray-600 hover:bg-gray-600 @if(request()->route()->uri == 'books') bg-gray-900 border-r-8 border-r-orange-600 @endif">
             <div class="w-6">
               <i class="fas fa-book mr-2"></i>
             </div>
             <span>Books</span>
           </a>
-          <a href="/categories"
+          <a href="#"
             class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium border-b border-gray-600 hover:bg-gray-600 @if(request()->route()->uri == 'categories') bg-gray-900 border-r-8 border-r-orange-600 @endif">
             <div class="w-6">
               <i class="fas fa-list mr-2"></i>
             </div>
             <span>Categories</span>
           </a>
-          <a href="/users"
-            class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium border-b border-gray-600 hover:bg-gray-600 @if(request()->route()->uri == 'users') bg-gray-900 border-r-8 border-r-orange-600 @endif">
-            <div class="w-6">
-              <i class="fas fa-users mr-2"></i>
-            </div>
-            <span>Users</span>
-          </a>
-          <a href="/rent-logs"
+          <a href="#"
             class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium border-b border-gray-600 hover:bg-gray-600 @if(request()->route()->uri == 'rent-logs') bg-gray-900 border-r-8 border-r-orange-600 @endif">
             <div class="w-6">
               <i class="fas fa-clipboard-list mr-2"></i>
@@ -126,13 +120,22 @@
             <span>Log Out</span>
           </a>
           @endif
+          @else
+          <a href="/login"
+            class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium border-b border-gray-600 hover:bg-gray-600">
+            <div class="w-6">
+              <i class="fas fa-sign-out mr-2"></i>
+            </div>
+            <span>Login</span>
+          </a>
+          @endif
 
         </div>
       </div>
       {{-- End Sidebar --}}
 
       {{-- Main Content --}}
-      <div class="min-h-full w-[85%] p-10">
+      <div class="h-screen w-[85%] p-10 border-2 border-black overflow-hidden">
         @yield('content')
       </div>
       {{-- End Main Content --}}

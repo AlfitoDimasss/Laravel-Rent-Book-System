@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\BookCategory;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Symfony\Component\VarDumper\VarDumper;
 
 class BookController extends Controller
 {
@@ -32,17 +33,19 @@ class BookController extends Controller
 
         if ($request->file('cover')) {
             $ext = $request->file('cover')->getClientOriginalExtension();
-            $newCoverName = $request->title . '-' . now()->timestamp . '.' . $ext;
+            $newCoverName = str_replace(' ', '', $request->title) . '-' . now()->timestamp . '.' . $ext;
             $request->file('cover')->storeAs('cover', $newCoverName);
             $book = Book::create([
                 'book_code' => $request['book_code'],
                 'title' => $request['title'],
-                'cover' => $newCoverName
+                'cover' => $newCoverName,
+                'rating' => $request['rating']
             ]);
         } else {
             $book = Book::create([
                 'book_code' => $request['book_code'],
-                'title' => $request['title']
+                'title' => $request['title'],
+                'rating' => $request['rating']
             ]);
         }
 
@@ -70,7 +73,7 @@ class BookController extends Controller
         $book = Book::where('slug', $slug)->first();
         if ($request->file('cover')) {
             $ext = $request->file('cover')->getClientOriginalExtension();
-            $newCoverName = $request->title . '-' . now()->timestamp . '.' . $ext;
+            $newCoverName = str_replace(' ', '', $request->title) . '-' . now()->timestamp . '.' . $ext;
             $request->file('cover')->storeAs('cover', $newCoverName);
             $book->update([
                 'cover' => $newCoverName
@@ -89,7 +92,8 @@ class BookController extends Controller
         }
 
         $res = $book->update([
-            'title' => $request['title']
+            'title' => $request['title'],
+            'rating' => $request['rating']
         ]);
 
         if ($res) {

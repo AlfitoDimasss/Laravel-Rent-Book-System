@@ -16,7 +16,8 @@ class Book extends Model
         'title',
         'slug',
         'status',
-        'cover'
+        'cover',
+        'rating'
     ];
 
     public function categories()

@@ -1,11 +1,3 @@
-{{-- @extends('layouts.mainLayout')
-
-@section('title', 'Books')
-
-@section('content')
-<h1 class="text-5xl font-bold text-center">BOOKS</h1>
-@endsection --}}
-
 @extends('layouts.mainLayout')
 
 @section('title', 'Books')
