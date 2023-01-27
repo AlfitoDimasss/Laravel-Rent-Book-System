@@ -21,6 +21,7 @@
 </div>
 <div class="relative overflow-x-auto">
   <table class="w-full text-sm text-left text-gray-500">
+    {{-- TABLE HEAD --}}
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b">
       <tr>
         <th scope="col" class="px-6 py-3">No</th>
@@ -32,6 +33,9 @@
         <th scope="col" class="px-6 py-3">Action</th>
       </tr>
     </thead>
+    {{-- END TABLE HEAD --}}
+
+    {{-- TABLE BODY --}}
     <tbody>
       @if ($books == null)
       <tr>
@@ -39,6 +43,7 @@
       </tr>
       @else
       @foreach ($books as $book)
+      {{-- ITERASI GANJIL --}}
       @if ($loop->iteration % 2 == 1)
       <tr class="bg-white border-b">
         <td class="px-6 py-4">{{ $loop->iteration }}</td>
@@ -51,11 +56,7 @@
           @endforeach
         </td>
         <td class="px-6 py-4 flex justify-center items-center">
-          @if ($book->cover == 'default.jpg')
-          <img src="./images/default.jpg" width="100px" height="100px" alt="">
-          @else
-          <img src="./storage/cover/{{ $book->cover }}" width="100px" height="100px" alt="">
-          @endif
+          <img src="./images/{{ $book->cover }}" width="100px" height="100px" alt="">
         </td>
         <td class="px-6 py-4 capitalize">{{ $book->status }}</td>
         <td class="px-6 py-4">
@@ -70,6 +71,8 @@
           </form>
         </td>
       </tr>
+      {{-- END ITERASI GANJIL --}}
+      {{-- ITERASI GENAP --}}
       @else
       <tr class=" bg-gray-50 border-b">
         <td class="px-6 py-4">{{ $loop->iteration }}</td>
@@ -82,11 +85,7 @@
           @endforeach
         </td>
         <td class="px-6 py-4 flex justify-center items-center">
-          @if ($book->cover == 'default.jpg')
-          <img src="./images/default.jpg" width="100px" height="100px" alt="">
-          @else
-          <img src="./storage/cover/{{ $book->cover }}" width="100px" height="100px" alt="">
-          @endif
+          <img src="./images/{{ $book->cover }}" width="100px" height="100px" alt="">
         </td>
         <td class="px-6 py-4 capitalize">{{ $book->status }}</td>
         <td class="px-6 py-4">
@@ -102,9 +101,11 @@
         </td>
       </tr>
       @endif
+      {{-- END ITERASI GENAP --}}
       @endforeach
       @endif
     </tbody>
+    {{-- END TABLE BODY --}}
   </table>
 </div>
 @endsection

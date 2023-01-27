@@ -30,9 +30,7 @@
       <div class="flex flex-col items-center">
         {{-- Image --}}
         <div class="w-28 h-36 flex justify-center">
-          <img
-            src="{{ $book->cover == 'default.jpg' ? asset('images/default.jpg') : asset('storage/cover/' . $book->cover) }}"
-            alt="">
+          <img src="../images/{{ $book->cover }}" alt="">
         </div>
         <div class="flex flex-col items-center">
           {{-- Title --}}
@@ -79,9 +77,7 @@
       <div class="flex flex-col items-center">
         {{-- Image --}}
         <div class="w-28 h-36 flex justify-center">
-          <img
-            src="{{ $book->cover == 'default.jpg' ? asset('images/default.jpg') : asset('storage/cover/' . $book->cover) }}"
-            alt="">
+          <img src="../images/{{ $book->cover }}" alt="">
         </div>
         <div class="flex flex-col items-center">
           {{-- Title --}}
@@ -123,9 +119,7 @@
       <div class="flex flex-col items-center">
         {{-- Image --}}
         <div class="w-28 h-36 flex justify-center">
-          <img
-            src="{{ $book->cover == 'default.jpg' ? asset('images/default.jpg') : asset('storage/cover/' . $book->cover) }}"
-            alt="">
+          <img src="../images/{{ $book->cover }}" alt="">
         </div>
         <div class="flex flex-col items-center">
           {{-- Title --}}

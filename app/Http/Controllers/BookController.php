@@ -35,6 +35,7 @@ class BookController extends Controller
             $ext = $request->file('cover')->getClientOriginalExtension();
             $newCoverName = str_replace(' ', '', $request->title) . '-' . now()->timestamp . '.' . $ext;
             $request->file('cover')->storeAs('cover', $newCoverName);
+            rename('storage/cover/' . $newCoverName, 'images/' . $newCoverName);
             $book = Book::create([
                 'book_code' => $request['book_code'],
                 'title' => $request['title'],
@@ -71,10 +72,14 @@ class BookController extends Controller
         $newCoverName = '';
         $newCategory = '';
         $book = Book::where('slug', $slug)->first();
+        if ($book->cover != 'default.jpg') {
+            unlink('./images/' . $book->cover);
+        }
         if ($request->file('cover')) {
             $ext = $request->file('cover')->getClientOriginalExtension();
             $newCoverName = str_replace(' ', '', $request->title) . '-' . now()->timestamp . '.' . $ext;
             $request->file('cover')->storeAs('cover', $newCoverName);
+            rename('storage/cover/' . $newCoverName, 'images/' . $newCoverName);
             $book->update([
                 'cover' => $newCoverName
             ]);
@@ -112,6 +117,9 @@ class BookController extends Controller
             $bookCategories = BookCategory::where('book_id', $book->id)->get();
             foreach ($bookCategories as $bookCategory) {
                 $bookCategory->delete();
+            }
+            if ($book->cover != 'default.jpg') {
+                unlink('./images/' . $book->cover);
             }
             $res = $book->delete();
             if ($res) {
