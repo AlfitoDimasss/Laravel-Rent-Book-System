@@ -15,7 +15,7 @@ class Book extends Model
         'book_code',
         'title',
         'slug',
-        'status',
+        'stock',
         'cover',
         'rating'
     ];

@@ -38,6 +38,12 @@ Route::middleware('guest')->group(function () {
 
 // ONLY AUTHENTICATED USERS CAN ACCESS
 Route::middleware('auth')->group(function () {
+    Route::get('/rent-logs', [RentLogController::class, 'index']);
+    Route::get('/rent-log-add', [RentLogController::class, 'create']);
+    Route::post('/rent-log-add', [RentLogController::class, 'store']);
+    Route::put('/rent-log-borrow/{slug}', [RentLogController::class, 'borrow']);
+    Route::put('/rent-log-return/{slug}', [RentLogController::class, 'return']);
+
     Route::get('/profile', [UserController::class, 'profile'])->middleware('only_user');
 
     Route::get('/logout', [AuthController::class, 'logout']);
@@ -69,6 +75,6 @@ Route::middleware('auth')->group(function () {
         Route::delete('/user-delete/{slug}', [UserController::class, 'destroy']);
 
         // RENT-LOGS ROUTE
-        Route::get('/rent-logs', [RentLogController::class, 'index']);
+        // Route::get('/rent-logs', [RentLogController::class, 'index']);
     });
 });

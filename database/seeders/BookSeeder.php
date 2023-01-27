@@ -20,6 +20,7 @@ class BookSeeder extends Seeder
             'book_code' => 'A01',
             'title' => 'Majalah Bobo',
             'slug' => 'majalah-bobo',
+            'rating' => 5,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -27,6 +28,7 @@ class BookSeeder extends Seeder
             'book_code' => 'A02',
             'title' => 'Journal Into Mystery',
             'slug' => 'journal-mystery',
+            'rating' => 4,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);

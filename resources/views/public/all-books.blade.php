@@ -12,7 +12,7 @@
       @foreach ($books as $book)
       <div class="flex flex-col items-center">
         {{-- Image --}}
-        <img src="./storage/cover/one-piece-2.jpg" alt="" width="120px" height="120px">
+        <img src="../images/{{ $book->cover }}" alt="" width="120px" height="120px">
 
         {{-- Title --}}
         <h5 class="text-sm mt-2">{{ $book->title }}</h5>

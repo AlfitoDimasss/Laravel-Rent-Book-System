@@ -19,8 +19,6 @@ class RentLogSeeder extends Seeder
         RentLog::insert([
             'user_id' => 2,
             'book_id' => 2,
-            'rent_date' => Carbon::now(),
-            'return_date' => Carbon::now()
         ]);
     }
 }

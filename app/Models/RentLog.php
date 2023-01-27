@@ -14,7 +14,8 @@ class RentLog extends Model
         'book_id',
         'rent_date',
         'return_date',
-        'actual_return_date'
+        'actual_return_date',
+        'status'
     ];
 
     public function user()

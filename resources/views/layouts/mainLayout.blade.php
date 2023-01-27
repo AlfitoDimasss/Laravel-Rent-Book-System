@@ -40,6 +40,7 @@
       <div class="bg-[#202E4B] w-full hidden lg:w-[15%] lg:min-h-full lg:block" id="target">
         <div class="bg-[#202E4B] border-gray-600 text-white">
           @if (Auth::user())
+          {{-- SIDEBAR ADMIN --}}
           @if (Auth::user()->role_id == 1)
           <a href="/dashboard"
             class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium border-b border-t border-gray-600 hover:bg-gray-600 @if(request()->route()->uri == 'dashboard') bg-gray-900 border-r-8 border-r-orange-600 @endif">
@@ -83,6 +84,9 @@
             </div>
             <span>Log Out</span>
           </a>
+          {{-- END SIDEBAR ADMIN --}}
+
+          {{-- SIDEBAR CLIENT --}}
           @else
           <a href="/profile"
             class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium border-b border-gray-600 hover:bg-gray-600 @if(request()->route()->uri == 'profile') bg-gray-900 border-r-8 border-r-orange-600 @endif">
@@ -91,21 +95,14 @@
             </div>
             <span>Profile</span>
           </a>
-          <a href="#"
-            class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium border-b border-gray-600 hover:bg-gray-600 @if(request()->route()->uri == 'books') bg-gray-900 border-r-8 border-r-orange-600 @endif">
+          <a href="/"
+            class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium border-b border-gray-600 hover:bg-gray-600 @if(request()->route()->uri == '/') bg-gray-900 border-r-8 border-r-orange-600 @endif">
             <div class="w-6">
               <i class="fas fa-book mr-2"></i>
             </div>
             <span>Books</span>
           </a>
-          <a href="#"
-            class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium border-b border-gray-600 hover:bg-gray-600 @if(request()->route()->uri == 'categories') bg-gray-900 border-r-8 border-r-orange-600 @endif">
-            <div class="w-6">
-              <i class="fas fa-list mr-2"></i>
-            </div>
-            <span>Categories</span>
-          </a>
-          <a href="#"
+          <a href="/rent-logs"
             class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium border-b border-gray-600 hover:bg-gray-600 @if(request()->route()->uri == 'rent-logs') bg-gray-900 border-r-8 border-r-orange-600 @endif">
             <div class="w-6">
               <i class="fas fa-clipboard-list mr-2"></i>
@@ -120,6 +117,7 @@
             <span>Log Out</span>
           </a>
           @endif
+          {{-- END SIDEBAR CLIENT --}}
           @else
           <a href="/login"
             class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium border-b border-gray-600 hover:bg-gray-600">

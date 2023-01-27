@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->nullable();
             $table->string('cover')->default('default.jpg');
-            $table->string('status')->default('available');
+            $table->integer('stock')->default(1);
             $table->integer('rating')->nullable();
             $table->timestamps();
         });
